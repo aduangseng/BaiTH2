@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Nhập Thông Tin Thời Tiết</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">Nhập Thông Tin Thời Tiết</h1>
+        {% if success %}
+            <p class="text-green-500 mt-4 text-center font-medium">✅ Đã lưu thành công!</p>
+        {% endif %}
+        <form method="post" class="space-y-4">
+            <div>
+                <label class="block text-gray-700 font-medium mb-2">ID:</label>
+                <input type="text" name="id" required 
+                       class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium mb-2">Tên:</label>
+                <input type="text" name="name" required 
+                       class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium mb-2">Nhiệt độ:</label>
+                <input type="text" name="temperature" required 
+                       class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div>
+                <label class="block text-gray-700 font-medium mb-2">Áp suất:</label>
+                <input type="text" name="pressure" required 
+                       class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <button type="submit" 
+                    class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-200">
+                Lưu
+            </button>
+        </form>
+    </div>
+</body>
+</html>
