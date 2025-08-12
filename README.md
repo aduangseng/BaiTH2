@@ -3,7 +3,7 @@
 Bài làm xây dựng một ứng dụng web tra cứu thông tin thời tiết sử dụng Python Flask làm backend và Google Firestore làm cơ sở dữ liệu.
 Ứng dụng cho phép người dùng:
 
-Nhập ID để tìm kiếm thông tin thời tiết.
+Lọc theo thời gian để tìm kiếm thông tin thời tiết.
 
 Hiển thị kết quả trực tiếp trên cùng trang.
 
@@ -44,10 +44,11 @@ Xử lý dữ liệu JSON từ Firestore và render sang HTML.
 3. Một số giao diện cơ bản 
 - 🖼 Giao diện nhập và lưu thông tin thời tiết.
 - <img width="567" height="670" alt="image" src="https://github.com/user-attachments/assets/aec3ac49-76fb-426e-9c4e-764d2849c322"/>
-- 🖼 Giao diện tìm kiếm thời tiết (Người dùng nhập ID để tìm kiếm thông tin thời tiết)
-- <img width="591" height="362" alt="image" src="https://github.com/user-attachments/assets/e7b916dc-46cc-4a27-b133-99a6c3e6051a" />
-- 🖼 Giao diện hiển thị kết quả.
-  <img width="551" height="405" alt="image" src="https://github.com/user-attachments/assets/d2c9ca1a-bba2-42df-86c5-f6e4d937f230" />
+- 🖼 Giao diện tìm kiếm thời tiết (Người dùng tìm kiếm thông tin bằng cách lọc theo thời gian)
+<img width="957" height="442" alt="image" src="https://github.com/user-attachments/assets/028f9eff-0482-4e86-8457-863a53416ea9" />
+
+
+
 
 
 
