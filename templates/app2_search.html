@@ -2,54 +2,59 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Tìm Thời Tiết</title>
+    <title>Lọc Dữ Liệu Thời Tiết</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center">
-    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">Tìm Thông Tin Thời Tiết</h1>
-        <form method="post" class="space-y-4">
-            <div>
-                <label class="block text-gray-700 font-medium mb-2">ID:</label>
-                <input type="text" name="id" required 
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-3xl">
+        <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Lọc Dữ Liệu Theo Khoảng Thời Gian</h2>
+        <form method="POST" class="flex flex-col sm:flex-row gap-4 mb-6">
+            <div class="flex-1">
+                <label class="block text-gray-700 font-medium mb-2">Từ ngày:</label>
+                <input type="date" name="start_date" required 
                        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
-            <button type="submit" 
-                    class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-200">
-                Tìm kiếm
-            </button>
+            <div class="flex-1">
+                <label class="block text-gray-700 font-medium mb-2">Đến ngày:</label>
+                <input type="date" name="end_date" required 
+                       class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div class="flex items-end">
+                <button type="submit" 
+                        class="w-full sm _
+
+:w-auto bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition duration-200">
+                    Lọc
+                </button>
+            </div>
         </form>
 
-        {% if weather %}
-            <h2 class="text-xl font-semibold text-gray-800 mt-6 mb-4">Kết quả:</h2>
-            <div class="bg-gray-50 p-4 rounded-md">
-                <table class="w-full border-collapse">
+        {% if results %}
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Kết quả:</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full border-collapse bg-white rounded-lg shadow">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="py-3 px-4 text-left text-gray-700 font-medium">ID</th>
+                            <th class="py-3 px-4 text-left text-gray-700 font-medium">Tên</th>
+                            <th class="py-3 px-4 text-left text-gray-700 font-medium">Thời gian</th>
+                            <th class="py-3 px-4 text-left text-gray-700 font-medium">Nhiệt độ</th>
+                            <th class="py-3 px-4 text-left text-gray-700 font-medium">Áp suất</th>
+                        </tr>
+                    </thead>
                     <tbody>
-                        <tr class="border-b">
-                            <td class="py-2 px-4 font-medium text-gray-700">ID</td>
-                            <td class="py-2 px-4">{{ weather.id }}</td>
+                        {% for row in results %}
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="py-3 px-4">{{ row.get('id', '') }}</td>
+                            <td class="py-3 px-4">{{ row.get('name', '') }}</td>
+                            <td class="py-3 px-4">{{ row.get('time', '') }}</td>
+                            <td class="py-3 px-4">{{ row.get('temperature', '') }}</td>
+                            <td class="py-3 px-4">{{ row.get('pressure', '') }}</td>
                         </tr>
-                        <tr class="border-b">
-                            <td class="py-2 px-4 font-medium text-gray-700">Tên</td>
-                            <td class="py-2 px-4">{{ weather.name }}</td>
-                        </tr>
-                        <tr class="border-b">
-                            <td class="py-2 px-4 font-medium text-gray-700">Thời gian</td>
-                            <td class="py-2 px-4">{{ weather.time }}</td>
-                        </tr>
-                        <tr class="border-b">
-                            <td class="py-2 px-4 font-medium text-gray-700">Nhiệt độ</td>
-                            <td class="py-2 px-4">{{ weather.temperature }}</td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4 font-medium text-gray-700">Áp suất</td>
-                            <td class="py-2 px-4">{{ weather.pressure }}%</td>
-                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
-        {% elif not_found %}
-            <p class="text-red-500 mt-4 text-center">❌ Không tìm thấy</p>
         {% endif %}
     </div>
 </body>

@@ -15,7 +15,7 @@ def index():
     if request.method == "POST":
         id = request.form["id"]
         name = request.form["name"]
-        time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        time = datetime.now()
         temperature = request.form["temperature"]
         pressure = request.form["pressure"]
         data = {
